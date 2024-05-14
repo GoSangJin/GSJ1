@@ -1,0 +1,181 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+.community {
+	width: 100%;
+	background-color: aliceblue;
+	padding-top: 50px;
+}
+
+/* 버그 역상속 margin 50px가 부모요소에게*/
+.community .inner{
+	width: 1180px;
+	margin: 0px auto;
+	background-color: beige;
+	padding: 0 20px;
+	position: relative;
+	/* 기준점 */
+}
+
+.community .inner .center-line {
+width: 4px;
+height: 100%;
+background-color: black;
+position: absolute;
+top:20px;
+left: 50%;
+margin-left: -2px;
+}
+
+.community .inner .center-line .scroll-icon{
+	width: 40px;
+	height: 40px;
+	background-color: darkgray;
+	border-radius: 50%;
+	font-size : 25px;
+	text-align: center;
+	line-height: 40px;
+	color: darkred;
+	position: absolute;
+	bottom: 0px;
+	left: 50%;
+	margin-left: -20px;
+	/* transform */
+}
+
+.community .inner .row{
+	display: flex;
+}
+
+.community .inner .row section{
+	background-color:lightcyan;
+	border-radius: 5px;
+	width: calc(50% - 40px);
+	padding: 20px;
+	position: relative;
+}
+
+.community .inner .row section .fa-house {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: darkgray;
+	color: darkred;
+	text-align: center;
+	line-height: 40px;
+	font-size: 25px;
+	position: absolute;
+}
+
+.community .inner .row section .details {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.community .inner .row section .details .title {
+	font: size 22px;
+	font-weight: 600;
+}
+
+.community .inner .row section p{
+	font:15px/1.5 arial;
+	color:#333;
+	margin: 10px 0px 17px 0px;
+}
+
+.community .inner .row section .bottom {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font:15px/1.5 arial;
+	color:#333;
+}
+
+.community .inner .row section .bottom button {
+	width: 80px;
+	height: 30px;
+
+	border-radius: 10px;
+	border: none;
+	outline: none;
+	background-color: darksalmon;
+	color: white;
+}
+
+.r1{
+justify-content: flex-start;
+}
+
+.r2{
+	justify-content: flex-end;
+}
+
+.r1 section .fa-house {
+	top:15px;
+	right: -60px;
+}
+
+.r2 section .fa-house {
+	top:15px;
+	left: -60px;
+}
+
+/* 미디어쿼리 mediaauery 
+화면 사이즈 인식, 서로 다른 css적용
+특정 브라우저 폭을 지정, css구문 입력하면 해당 브라우저 폭에서
+미디어 쿼리 안쪽 구문이 기존의 css구문을 덮고
+최신 css구문이 기존 구문을 덮어쓰는 원칙
+
+반응형 / 적응형
+
+반응형 웹사이트 : 하나의 주소로 데스크탑 버전 웹페이지,테블릿혹
+모바일 버번의 웹페이지를 커버할 수  있는 절약적인 웹사이트
+
+적응형 웹사이트 : 디바이스별 html을 만듬, 데스크탑, 테블릿, 모바일
+에 사용자 경험을 향상시키는 것을 목적으로 세분화,구분화해서 구현
+*/
+
+/* inner에 1180px을 줌, 이 크기보다 작은 1179px의 디바이스 너비를 인식
+해당 영역으로 들어가면 {}안의 쿼리로 css적용 */
+@media screen and (max-width: 1179px) {
+/* 미디어쿼리 작성 원칙
+1. 고정된 px을 %나 뷰포트로 변경
+2. 원본 css와 속성 값이 같다면 생략
+3. 해당 구간에 추가해야하는경우 원본 css구문 태그 경로를 유지하면
+동일하게 미디어쿼리 구간에 작성 */
+
+.community .inner{
+	/* 1원칙대로 고정px을 %로 변경 */
+	width: 100%;
+}
+.community .inner .center-line {
+	left: 40px;
+}
+.community .inner .row {
+	margin: 30px 0px 3px 60px;
+}
+.community .inner .row section {
+	width: 100%;
+}
+.community .inner .row section .fa-house {
+	left: -60px;
+}
+}
+
+@media screen and (max-width: 550px) {
+	.community .inner .center-line{
+		display: none;
+	}
+	.community .inner .row{
+		margin: 10px 0px;
+	}
+	.community .inner .row section .fa-house {
+		display: none;
+	}
+}
+
+	
+
